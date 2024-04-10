@@ -5,15 +5,17 @@ const addTaskBtn = $('.btn');
 const modal = $('.modal');
 const saveBtn = $('.save-btn');
 
-let div = $('<div>').add('class', 'card');
-let title = $('<h1>').add('class', 'card-title');
-let description = $('<p>').add('class', 'card-description');
-let dueDate = $('<p>').add('class', 'card-date');
-let deleteBtn = $('<button>').add('class', 'delete-btn');
-
 const titleInput = $('#title').val();
 const descriptionInput = $('#description').val();
 const dueDateInput = $('#due-date').val();
+
+let div = $('<div>').add('class', 'card');
+let title = $('<h1>').add('class', 'card-title').text(titleInput);
+let description = $('<p>').add('class', 'card-description').text(descriptionInput);
+let dueDate = $('<p>').add('class', 'card-date').text(dueDateInput);
+let deleteBtn = $('<button>').add('class', 'delete-btn').text('Delete');
+
+
 
 // Todo: create a function to generate a unique task id
 function generateTaskId() {
@@ -40,19 +42,18 @@ saveBtn.on('click', function (){
 });
 
 // Todo: create a function to create a task card
-const placement = $('.row')
+const placement = $('#to-do')
 function createTaskCard(task) {
-   
-    $(div);
-    div.append(title);
-    div.append(description)
-    div.append(dueDate)
-    div.append(deleteBtn)
+   localStorage.getItem('formData')
 
+    div.append(title);
+    div.append(description);
+    div.append(dueDate);
+    div.append(deleteBtn);
     placement.append(div);
 };
 
-
+createTaskCard();
 
 
 
