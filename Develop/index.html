@@ -35,25 +35,25 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-           <!-- form needs taks title text input, task duedate calendar input, and task description textarea -->
+           <!-- form needs task title text input, task duedate calendar input, and task description textarea -->
             <form class="modal-form" action="">
               <div class="task-title">
                 <label for="task-title">Task Title</label>
-                <input name="task-title" type="text">
+                <input class="title" id="title" name="task-title" type="text">
               </div>
               <div class="task-due">
                 <label for="due-date">Task Due Date</label>
-                <input name="due-date" type="date">
+                <input id="due-date" name="due-date" type="date">
               </div>
               <div class="description">
                 <label for="description">Task Description</label>
-                <textarea name="description" id="description"></textarea>
+                <textarea id="description" name="description"></textarea>
               </div>
             </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="save-btn btn btn-primary">Save changes</button>
           </div>
         </div>
       </div>
