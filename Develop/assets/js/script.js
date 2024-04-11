@@ -55,12 +55,12 @@ saveBtn.on('click', function createTaskCard(task) {
 
 });
 
-$('.draggable').draggable();
+$('.draggable').draggable({
+    zIndex: 100
+});
 
 $('.droppable').droppable({
-    drop: function() {
-        alert('dropped');
-    }
+    accept: '.draggable'
 });
 
 
