@@ -14,7 +14,7 @@ generateTaskId()
 
 // Save form input to local storage 
 saveBtn.on('click', function (){
-    let stringTasks = localStorage.getItem('userTasks')
+    let stringTasks = localStorage.getItem('userTasks');
     let userTasks = JSON.parse(stringTasks) || [];
 
     const formData = {
@@ -42,21 +42,37 @@ saveBtn.on('click', function createTaskCard(task) {
    const placement = $('#todo-cards');
 
    for (i = 0; i < newCards.length; i++) {
-    let div = $('<div>').add('class', 'task-card');
+    let div = $('<div>');
     let cardTitle = $('<h2>').text(newCards[i].Title);
     let cardDesc = $('<p>').text(newCards[i].Description);
     let cardDue = $('<h4>').text(newCards[i].DueDate);
-
+   
     div.append(cardTitle);
     div.append(cardDesc);
     div.append(cardDue);
-    placement.append(div)
-
-    
+    placement.append(div);
    }
+
 });
 
-createTaskCard();
+$('.draggable').draggable();
+
+$('.droppable').droppable({
+    drop: function() {
+        alert('dropped');
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
 
 
 

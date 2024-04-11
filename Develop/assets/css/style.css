@@ -43,4 +43,9 @@ body {
 
 #todo-cards div {
   border: 3px solid black;
+  background-color: rgb(176, 48, 48);
+}
+
+.card-body {
+  border: 3px solid black;
 }
