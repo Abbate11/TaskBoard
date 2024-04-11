@@ -40,3 +40,7 @@ body {
   align-self: center;
   width: 100%;
 }
+
+#todo-cards div {
+  border: 3px solid black;
+}

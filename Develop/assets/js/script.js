@@ -1,19 +1,7 @@
 // Retrieve tasks and nextId from localStorage
-let taskList = JSON.parse(localStorage.getItem("tasks"));
-let nextId = JSON.parse(localStorage.getItem("nextId"));
 const addTaskBtn = $('.btn');
 const modal = $('.modal');
 const saveBtn = $('.save-btn');
-
-const titleInput = $('#title').val();
-const descriptionInput = $('#description').val();
-const dueDateInput = $('#due-date').val();
-
-let div = $('<div>').add('class', 'card');
-let title = $('<h1>').add('class', 'card-title').text(titleInput);
-let description = $('<p>').add('class', 'card-description').text(descriptionInput);
-let dueDate = $('<p>').add('class', 'card-date').text(dueDateInput);
-let deleteBtn = $('<button>').add('class', 'delete-btn').text('Delete');
 
 
 
@@ -26,32 +14,47 @@ generateTaskId()
 
 // Save form input to local storage 
 saveBtn.on('click', function (){
-    console.log('clicked');
-    
-    
+    let stringTasks = localStorage.getItem('userTasks')
+    let userTasks = JSON.parse(stringTasks) || [];
+
     const formData = {
-        Title: titleInput,
-        Description: descriptionInput,
-        DueDate: dueDateInput
+        Title: $('#title').val(),
+        Description: $('#description').val(),
+        DueDate: $('#due-date').val()
     };
 
-    console.log(titleInput);
-    console.log(descriptionInput);
-    console.log(dueDateInput);
-    localStorage.setItem('formData', JSON.stringify(formData));
+    userTasks.push(formData);
+    localStorage.setItem('userTasks', JSON.stringify(userTasks));
 });
 
-// Todo: create a function to create a task card
-const placement = $('#to-do')
-function createTaskCard(task) {
-   localStorage.getItem('formData')
 
-    div.append(title);
-    div.append(description);
-    div.append(dueDate);
-    div.append(deleteBtn);
-    placement.append(div);
-};
+//Create a function to reset the form on save
+saveBtn.on('click', function () {
+    document.querySelector('form').reset();
+});
+
+
+// Todo: create a function to create a task card
+
+saveBtn.on('click', function createTaskCard(task) {
+   const stringCard = localStorage.getItem('userTasks');
+   const newCards = JSON.parse(stringCard);
+   const placement = $('#todo-cards');
+
+   for (i = 0; i < newCards.length; i++) {
+    let div = $('<div>').add('class', 'task-card');
+    let cardTitle = $('<h2>').text(newCards[i].Title);
+    let cardDesc = $('<p>').text(newCards[i].Description);
+    let cardDue = $('<h4>').text(newCards[i].DueDate);
+
+    div.append(cardTitle);
+    div.append(cardDesc);
+    div.append(cardDue);
+    placement.append(div)
+
+    
+   }
+});
 
 createTaskCard();
 
